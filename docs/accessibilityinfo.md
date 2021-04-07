@@ -267,3 +267,19 @@ Set accessibility focus to a React component.
 On Android, this calls `UIManager.sendAccessibilityEvent` method with passed `reactTag` and `UIManager.AccessibilityEventTypes.typeViewFocused` arguments.
 
 > **Note**: Make sure that any `View` you want to receive the accessibility focus has `accessible={true}`.
+
+### `getRecommendedTimeoutMillis()` <div class="label android">Android</div>
+
+```jsx
+static getRecommendedTimeoutMillis(originalTimeout, uiContentFlags)
+```
+
+Gets the timeout in millisecond that the user needs.  
+On Android, This value is set in "Time to take action (Accessibility timeout)" of "Accessibility" settings.
+
+**Parameters:**
+
+| Name | Type   | Required | Description                              |
+| ---- | ------ | -------- | ---------------------------------------- |
+| originalTimeout | number | Yes      | The timeout to return if "Time to take action (Accessibility timeout)" is not set. Specify in milliseconds. |
+| uiContentFlags | string | No      | Flags the UI that will be included in the timeout. See [Accessibility Manager Documentation](https://developer.android.com/reference/android/view/accessibility/AccessibilityManager#constants_1) for details. Currently this only supports either `"FLAG_CONTENT_ICONS"`, `"FLAG_CONTENT_TEXT"` or `"FLAG_CONTENT_CONTROLS"`. |
